@@ -1,81 +1,87 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Think Smart Psychology & Education</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f8f9fa;
-        }
-        header {
-            background: #ff8c00;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        section {
-            padding: 30px;
-        }
-        h2 {
-            text-align: center;
-            color: #004aad;
-        }
+<meta charset="UTF-8">
+<title>Think Smart Psychology & Education</title>
 
-        /* GALERI */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .gallery img {
-            width: 100%;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f6f9;
+}
 
-        /* MODAL / POPUP */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 90%;
-            max-height: 90%;
-            text-align: center;
-        }
-        .modal-content img {
-            max-width: 100%;
-            border-radius: 8px;
-        }
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-        }
-    </style>
+header {
+    background: #ff8c00;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #004aad;
+}
+
+/* GALERI */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    padding: 30px;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* MODAL */
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+}
+
+#modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+}
+
+#modal-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+#close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+</style>
 </head>
+
 <body>
 
 <header>
@@ -83,36 +89,30 @@
     <p>Your One Stop Education and Psychology Solution</p>
 </header>
 
-<section>
-    <h2>Galeri Kegiatan Kami</h2>
+<h2>Galeri Kegiatan Kami</h2>
 
-    <div class="gallery">
-        <img src="speech therapy.jpg" 
-             onclick="openModal(this)" 
-             data-title="Terapi Wicara"
-             data-desc="Layanan terapi wicara untuk membantu anak dengan hambatan komunikasi, artikulasi, dan perkembangan bahasa agar lebih percaya diri dalam berinteraksi.">
+<div class="gallery">
+    <img src="speech therapy.jpg" onclick="showImage(this)"
+         data-title="Terapi Wicara"
+         data-desc="Layanan terapi wicara untuk membantu anak dengan hambatan komunikasi, artikulasi, dan perkembangan bahasa.">
 
-        <img src="counseling therapy.jpg" 
-             onclick="openModal(this)" 
-             data-title="Konseling Psikologi"
-             data-desc="Layanan konseling untuk anak, remaja, dan orang tua dalam mengatasi masalah emosi, perilaku, akademik, dan pengembangan diri.">
+    <img src="counseling therapy.jpg" onclick="showImage(this)"
+         data-title="Konseling Psikologi"
+         data-desc="Layanan konseling untuk anak, remaja, dan orang tua dalam mengatasi masalah emosi, perilaku, dan pengembangan diri.">
 
-        <img src="psychology.jpg" 
-             onclick="openModal(this)" 
-             data-title="Assessment & Tes Psikologi"
-             data-desc="Pelayanan tes psikologi untuk kebutuhan pendidikan, minat bakat, kesiapan sekolah, serta pemetaan kemampuan kognitif dan emosional anak.">
+    <img src="psychology.jpg" onclick="showImage(this)"
+         data-title="Assessment & Tes Psikologi"
+         data-desc="Tes psikologi untuk kebutuhan pendidikan, minat bakat, kesiapan sekolah, serta pemetaan kemampuan anak.">
 
-        <img src="Brosur.png" 
-             onclick="openModal(this)" 
-             data-title="Bimbingan Belajar"
-             data-desc="Program bimbingan belajar yang disesuaikan dengan kebutuhan setiap anak, termasuk pendampingan akademik bagi anak berkebutuhan khusus.">
-    </div>
-</section>
+    <img src="Brosur.png" onclick="showImage(this)"
+         data-title="Bimbingan Belajar"
+         data-desc="Program bimbingan belajar yang disesuaikan dengan kebutuhan anak, termasuk pendampingan anak berkebutuhan khusus.">
+</div>
 
-<!-- MODAL -->
-<div id="modal" class="modal">
-    <span class="close" onclick="closeModal()">×</span>
-    <div class="modal-content">
+<!-- POPUP / MODAL -->
+<div id="modal">
+    <span id="close" onclick="closeModal()">×</span>
+    <div id="modal-content">
         <img id="modal-img">
         <h3 id="modal-title"></h3>
         <p id="modal-desc"></p>
@@ -120,11 +120,11 @@
 </div>
 
 <script>
-function openModal(img) {
+function showImage(img) {
     document.getElementById("modal").style.display = "flex";
     document.getElementById("modal-img").src = img.src;
-    document.getElementById("modal-title").innerText = img.getAttribute("data-title");
-    document.getElementById("modal-desc").innerText = img.getAttribute("data-desc");
+    document.getElementById("modal-title").innerText = img.dataset.title;
+    document.getElementById("modal-desc").innerText = img.dataset.desc;
 }
 
 function closeModal() {

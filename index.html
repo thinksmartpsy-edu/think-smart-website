@@ -92,21 +92,25 @@ h2 {
 <h2>Galeri Kegiatan Kami</h2>
 
 <div class="gallery">
+    <!-- TERAPI WICARA -->
     <img src="speech therapy.jpg" onclick="showImage(this)"
          data-title="Terapi Wicara"
-         data-desc="Layanan terapi wicara untuk membantu anak dengan hambatan komunikasi, artikulasi, dan perkembangan bahasa agar lebih percaya diri dalam berinteraksi.">
+         data-desc="Layanan terapi wicara yang dirancang untuk membantu anak dengan hambatan komunikasi, artikulasi, dan perkembangan bahasa. Program ini bertujuan meningkatkan kemampuan berbicara, pemahaman bahasa, serta kepercayaan diri anak dalam berinteraksi sehari-hari.">
 
+    <!-- KONSELING PSIKOLOGI -->
     <img src="counseling therapy.jpg" onclick="showImage(this)"
          data-title="Konseling Psikologi"
-         data-desc="Layanan konseling untuk anak, remaja, dan orang tua dalam mengatasi masalah emosi, perilaku, akademik, serta pengembangan diri.">
+         data-desc="Layanan konseling profesional untuk anak, remaja, dan orang tua dalam mengatasi tantangan emosi, perilaku, hubungan sosial, serta masalah akademik. Pendekatan yang digunakan bersifat empatik, rahasia, dan berfokus pada pengembangan potensi individu.">
 
+    <!-- TES & ASESMEN PSIKOLOGI -->
     <img src="psychology.jpg" onclick="showImage(this)"
          data-title="Assessment & Tes Psikologi"
-         data-desc="Pelayanan tes psikologi untuk kebutuhan pendidikan, minat bakat, kesiapan sekolah, serta pemetaan kemampuan kognitif dan emosional anak.">
+         data-desc="Pelayanan tes dan asesmen psikologi untuk kebutuhan pendidikan, minat dan bakat, kesiapan sekolah, serta pemetaan kemampuan kognitif dan emosional anak. Hasil asesmen digunakan sebagai dasar rekomendasi pendidikan yang tepat.">
 
+    <!-- BIMBINGAN BELAJAR -->
     <img src="Brosur.png" onclick="showImage(this)"
          data-title="Bimbingan Belajar"
-         data-desc="Program bimbingan belajar yang disesuaikan dengan kebutuhan setiap anak, termasuk pendampingan akademik bagi anak berkebutuhan khusus.">
+         data-desc="Program bimbingan belajar yang disesuaikan dengan kebutuhan setiap anak, termasuk pendampingan akademik bagi anak berkebutuhan khusus. Metode pembelajaran dirancang individual, terstruktur, dan berorientasi pada perkembangan optimal anak.">
 </div>
 
 <!-- POPUP / MODAL -->
@@ -116,6 +120,9 @@ h2 {
         <img id="modal-img">
         <h3 id="modal-title"></h3>
         <p id="modal-desc"></p>
+        <p style="font-size:12px;color:#777;margin-top:10px;">
+            Tekan <strong>ESC</strong> atau klik <strong>×</strong> untuk menutup
+        </p>
     </div>
 </div>
 
@@ -127,9 +134,17 @@ function showImage(img) {
     document.getElementById("modal-desc").innerText = img.getAttribute("data-desc");
 }
 
+// TUTUP DENGAN TOMBOL X
 function closeModal() {
     document.getElementById("modal").style.display = "none";
 }
+
+// TUTUP DENGAN TOMBOL ESC
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        closeModal();
+    }
+});
 </script>
 
 </body>
